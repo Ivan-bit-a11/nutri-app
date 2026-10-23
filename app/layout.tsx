@@ -25,10 +25,23 @@ export const metadata: Metadata = {
   other: {
     copyright: "© Ivan Mbalame",
   },
+  manifest: "/manifest.json", // ← liga o manifesto PWA
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "NutriFlow",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 }
 
 export const viewport: Viewport = {
   themeColor: "#f5f6fa",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default async function RootLayout({
@@ -40,7 +53,10 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${_inter.variable} ${_plusJakarta.variable} font-sans`} suppressHydrationWarning>
+      <body
+        className={`${_inter.variable} ${_plusJakarta.variable} font-sans`}
+        suppressHydrationWarning
+      >
         <I18nProvider locale={locale}>
           {children}
           <Toaster richColors position="top-right" />
